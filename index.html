@@ -14,7 +14,7 @@
         $(document).ready(function() {
        //Get access token.
        //Because the access token is a URL parameter it needs to be decoded
-          var accessToken = decodeURI(GetURLParameter('1122323233'));
+          var accessToken = decodeURI(GetURLParameter('access_token'));
           console.log(accessToken);
  
            //Use this function to get the access token from the URL
@@ -37,7 +37,7 @@
  var accountName = $('#name').val();
  if(accountName!= ''){
    //replace the below url with your domain name or yourInstance.salesforce.com
-   var requestUrl = 'https://eu5.salesforce.com/services/data/v20.0/sobjects/Account/';
+   var requestUrl = 'https://starfireed--dev.lightning.force.com/services/data/v20.0/sobjects/Account/';
    //create a javascript object with the account field values
    var accountInfo = {
        "Name" :accountName
@@ -66,14 +66,14 @@
            alert('Please specify name');
             }
 
-           })
+           });
 //If account is successfully created
 function displayAccountInfo(responseObject){
   var statusMessage = '<p>Success! Your account has been created, click on the link below.</p>';
   $('#status').append(statusMessage);
   $('<a>',{//replace this with your salesforce instance url
-    text: 'https://eu5.salesforce.com/'+responseObject.id,
-    href: 'https://eu5.salesforce.com/'+responseObject.id,
+    text: 'https://starfireed--dev.lightning.force.com//'+responseObject.id,
+    href: 'https://starfireed--dev.lightning.force.com//'+responseObject.id,
     target : '_blank'
    }).appendTo($('#status'));
        }
