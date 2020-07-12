@@ -1,0 +1,24 @@
+<html>
+ <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+ </head>
+ <body>
+  <h3>REST API With Javascript</h3>
+  <button id="connect">Connect to the REST API</button>
+  <script type="text/javascript">
+    $(document).ready(function(){
+     $('#connect').click(function(){
+     var clientId = "3MVG9FxR3Tq3eZN.3Ykts1kDoDlrCwDoydYPeZOpng49i_2T8utK1uwGNoybnDYtYMDvtfihvRR9qz3zyxS87";
+     var consumerSecret = "60227DB651CE6A2FF7A1B22A5976F51AD29A8DF5443576C2B82596A31EFA530E";
+     var authEndPoint = "https://test.salesforce.com/services/oauth2/authorize";
+
+     var responseType = "token";
+
+     var redirectURI = "https://rishabh102004.github.io/Scheduler/";
+     var requestURL = authEndPoint+'?client_id='+clientId+'&response_type='+responseType+'&redirect_uri='+redirectURI;
+     window.location = requestURL;
+     });
+  })
+ </script>
+ </body>
+</html>
