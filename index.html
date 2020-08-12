@@ -12,29 +12,7 @@
       <button id="button">Submit</button>
       <div id="status"></div>
       <script type="text/javascript">
-	var accessToken;
-        $(document).ready(function(){
-       //Get access token.
-       //Because the access token is a URL parameter it needs to be decoded
-          accessToken = decodeURI(GetURLParameter('access_token'));
-          console.log(accessToken);
- 
-           //Use this function to get the access token from the URL
-           function GetURLParameter(sParam)
-            {
-              var mainURL = document.location+'';
-              var pageUrls = mainURL.split('#');
-              var sURLVariables = pageUrls[1].split('&');
-              for (var i = 0; i < sURLVariables.length; i++) 
-                {
-                  var sParameterName = sURLVariables[i].split('=');
-                  if (sParameterName[0] == sParam) 
-                    {
-                      return sParameterName[1];
-                    }
-                }
-			}
-		});
+	
 
 			//Create Account Record button click
 			$('#button').click(function(){
@@ -49,6 +27,29 @@
 										}
 					//convert the object to a JSON string
 					var accountInfoJson = JSON.stringify(accountInfo);
+					var accessToken;
+					$(document).ready(function(){
+				       //Get access token.
+				       //Because the access token is a URL parameter it needs to be decoded
+					  accessToken = decodeURI(GetURLParameter('access_token'));
+					  console.log(accessToken);
+
+					   //Use this function to get the access token from the URL
+					   function GetURLParameter(sParam)
+					    {
+					      var mainURL = document.location+'';
+					      var pageUrls = mainURL.split('#');
+					      var sURLVariables = pageUrls[1].split('&');
+					      for (var i = 0; i < sURLVariables.length; i++) 
+						{
+						  var sParameterName = sURLVariables[i].split('=');
+						  if (sParameterName[0] == sParam) 
+						    {
+						      return sParameterName[1];
+						    }
+						}
+							}
+						});
 					//send POST with ajax
 					$.ajax({
 					  type: 'GET',
