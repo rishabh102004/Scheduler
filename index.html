@@ -42,7 +42,7 @@
 				var accountName = $('#name').val();
 				if(accountName!= ''){
 				//replace the below url with your domain name or yourInstance.salesforce.com
-					var requestUrl = 'https://cors-anywhere.herokuapp.com/https://starfireed--dev.my.salesforce.com/services/data/v20.0/sobjects/Account/';
+					var requestUrl = 'https://cors-anywhere.herokuapp.com/https://starfireed--dev.my.salesforce.com/services/data/v20.0/sobjects/hed__Course_Offering__c/describe/';
 					//create a javascript object with the account field values
 					var accountInfo = {
 						"Name" :accountName
@@ -51,7 +51,7 @@
 					var accountInfoJson = JSON.stringify(accountInfo);
 					//send POST with ajax
 					$.ajax({
-					  type: 'POST',
+					  type: 'GET',
 					  url : requestUrl,
 					  //add the authorization header including the access_token
 					  crossDomain: true,
@@ -62,10 +62,12 @@
 								  },
 					   data : accountInfoJson,
 					   success : function(response){
-									displayAccountInfo(response);
+							console.log('Success!');		
+						   console.log(response);
 											},
 					   error: function(response){
-									displayError(response);
+						   console.log('Error');
+									console.log(response);
 											}
 					});
 			 
@@ -75,27 +77,7 @@
 			 
 			});
 			//If account is successfully created
-			function displayAccountInfo(responseObject){
-			 console.log(responseObject);
-			  var statusMessage = '<p>Success! Your account has been created, click on the link below.</p>';
-			  $('#status').append(statusMessage);
-			  $('<a>',{//replace this with your salesforce instance url
-				text: 'https://starfireed--dev.my.salesforce.com/'+responseObject.id,
-				href: 'https://starfireed--dev.my.salesforce.com/'+responseObject.id,
-				target : '_blank'
-			   }).appendTo($('#status'));
-			}
-		 
-			//If an error message occurred
-			function displayError(responseObject){
-			  var responseJson = responseObject.responseJSON;
-			  var statusMessage = '<p>A problem has occurred, please contact your administrator</p>';
-			  $('#status').append(statusMessage);
-			   $('<p>',{
-				   text : responseJson[0].errorCode+": "+responseJson[0].message
-				}).appendTo($('#status'));
-			 
-			}
+			
 		  
     </script>
    </body>
